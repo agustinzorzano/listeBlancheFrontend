@@ -24,7 +24,7 @@ export class MailComponent implements OnInit {
   email: Email;
 
   messageServerError =
-    'Erreur lors du traitement de la requête par le serveur. Veuillez nous excuser pour la gêne occasionnée.';
+    'Error while processing the request by the server. We apologize for the inconvenience.';
 
   constructor(private emailService: EmailService, private router: Router) {
     //super(router);

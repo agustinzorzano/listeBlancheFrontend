@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   selectedBlack : String;
 
   messageServerError =
-    'Erreur lors du traitement de la requête par le serveur. Veuillez nous excuser pour la gêne occasionnée.';
+    'Error while processing the request by the server. We apologize for the inconvenience.';
 
   constructor(private listService: ListService, private formBuilder: FormBuilder) {
     this.addInWhiteListForm = this.formBuilder.group({
@@ -46,7 +46,7 @@ export class ListComponent implements OnInit {
     this.addInWhiteListForm.reset();
     this.listService.postInWhiteList(data.whiteemailitem).subscribe(
       _result => location.reload(),
-      _error => alert('Erreur lors du changemement')
+      _error => alert('Error during change')
     );
   }
 
@@ -54,7 +54,7 @@ export class ListComponent implements OnInit {
     this.addInBlackListForm.reset();
     this.listService.postInBlackList(data.blackemailitem).subscribe(
       _result => location.reload(),
-      _error => alert('Erreur lors du changemement')
+      _error => alert('Error during change')
     );
   }
 

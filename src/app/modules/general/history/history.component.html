@@ -1,19 +1,20 @@
 <clr-main-container>
     <div class="app">
-        <div>Voici un historique de tous les mails :</div>
+        <div>Here is a history of all emails:</div>
       <clr-datagrid [(clrDgSingleSelected)]="selectedEmail">
         <clr-dg-column [clrDgField]="'email_subject'">email subject</clr-dg-column>
         <clr-dg-column [clrDgField]="'email_sender'">email sender</clr-dg-column>
         <clr-dg-column [clrDgField]="'reason'">reason</clr-dg-column>
         <clr-dg-column [clrDgField]="'created_at'">date</clr-dg-column>
-        
-  
+
+
         <clr-dg-row *clrDgItems="let email of emails" [clrDgItem]="email">
           <clr-dg-cell>{{ email.email_subject }}</clr-dg-cell>
           <clr-dg-cell>{{ email.email_sender }}</clr-dg-cell>
           <clr-dg-cell>{{ email.reason }}</clr-dg-cell>
+          <clr-dg-cell>{{ email.created_at }}</clr-dg-cell>
         </clr-dg-row>
-  
+
         <clr-dg-footer>{{ emails.length }} emails</clr-dg-footer>
       </clr-datagrid>
       Selected email:

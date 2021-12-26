@@ -1,6 +1,6 @@
 <clr-main-container>
   <clr-datagrid [(clrDgSingleSelected)]="selectedWhite">
-    <clr-dg-column [clrDgField]="'whiteemailname'">Liste blanche</clr-dg-column>
+    <clr-dg-column [clrDgField]="'whiteemailname'">White List</clr-dg-column>
     <clr-dg-row *clrDgItems="let whiteemail of whitelist" [clrDgItem]="whiteemail">
       <clr-dg-cell>{{ whiteemail }}</clr-dg-cell>
     </clr-dg-row>
@@ -10,9 +10,9 @@
     [formGroup]="addInWhiteListForm"
     (ngSubmit)="onWhiteListSubmit(addInWhiteListForm.value)"
   >
-    <section>Ajoutez les adresses dessous</section>
+    <section>Add addresses below</section>
     <clr-input-container>
-      <label for="whiteemailitem" class="clr-sr-only">Adresse</label>
+      <label for="whiteemailitem" class="clr-sr-only">Address</label>
       <input
         id="whiteemailitem"
         type="text"
@@ -21,7 +21,7 @@
         formControlName="whiteemailitem"
       />
     </clr-input-container>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-primary">Add</button>
   </form>
   <div>
     <button class="btn btn-primary" [disabled]="!selectedWhite" (click)="onDeleteWhite()">
@@ -29,7 +29,7 @@
     </button>
   </div>
   <clr-datagrid [(clrDgSingleSelected)]="selectedBlack">
-    <clr-dg-column [clrDgField]="'blackemailname'">Liste noire</clr-dg-column>
+    <clr-dg-column [clrDgField]="'blackemailname'">Black List</clr-dg-column>
     <clr-dg-row *clrDgItems="let blackemail of blacklist" [clrDgItem]="blackemail">
       <clr-dg-cell>{{ blackemail }}</clr-dg-cell>
     </clr-dg-row>
@@ -39,9 +39,9 @@
     [formGroup]="addInBlackListForm"
     (ngSubmit)="onBlackListSubmit(addInBlackListForm.value)"
   >
-    <section>Ajoutez les adresses dessous</section>
+    <section>Add addresses below</section>
     <clr-input-container>
-      <label for="blackemailitem" class="clr-sr-only">Adresse</label>
+      <label for="blackemailitem" class="clr-sr-only">Address</label>
       <input
         id="blackemailitem"
         type="text"
@@ -50,15 +50,15 @@
         formControlName="blackemailitem"
       />
     </clr-input-container>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-primary">Add</button>
   </form>
   <div>
     <button class="btn btn-primary" [disabled]="!selectedBlack" (click)="onDeleteBlack()">
       <span class="nav-text">Delete</span>
     </button>
   </div>
-  
+
 </clr-main-container>
 
-<!--Composant qui regroupe les informations sur les listes blanches et noires. 
+<!--Composant qui regroupe les informations sur les listes blanches et noires.
     Possibilité de les modifier aussi.-->

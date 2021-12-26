@@ -39,7 +39,7 @@ export class CreateAccountComponent implements OnInit {
         this.logCreaComponent.connect();
         this.router.navigate(['login']);
       },
-      _error => alert('création échouée')
+      _error => alert('Failed to create the account')
     );
   }
 

@@ -1,5 +1,5 @@
 <clr-main-container>
-  <div class="create-account-wrapper">
+  <div class="create-account-wrapper" style="margin-left: 1em">
     <form class="login" [formGroup]="creationForm" (ngSubmit)="onSubmit(creationForm.value)">
       <section class="title">
         <h3 class="welcome">Subscribe to</h3>
@@ -7,11 +7,11 @@
       </section>
       <div class="create-account-group">
         <clr-input-container>
-          <label for="email" class="clr-sr-only">Adresse email</label>
+          <label for="email" class="clr-sr-only">Email address</label>
           <input id="email" type="text" clrInput placeholder="Email" formControlName="email" />
         </clr-input-container>
         <clr-password-container>
-          <label for="email" class="clr-sr-only">Mot de passe de cette adresse</label>
+          <label for="email" class="clr-sr-only">Password for this email address</label>
           <input
             id="email"
             type="text"
@@ -21,7 +21,7 @@
           />
         </clr-password-container>
         <clr-input-container>
-          <label for="email" class="clr-sr-only">Nom d'utilisateur ListeBlanche</label>
+          <label for="email" class="clr-sr-only">Full name</label>
           <input
             id="email"
             type="text"
@@ -31,7 +31,7 @@
           />
         </clr-input-container>
         <clr-password-container>
-          <label for="password" class="clr-sr-only">Mot de passe ListeBlanche</label>
+          <label for="password" class="clr-sr-only">Account password</label>
           <input
             id="password"
             type="password"
@@ -42,10 +42,10 @@
         </clr-password-container>
 
         <button type="submit" class="btn btn-primary">S'inscrire</button>
-        <a href="login" class="signup">Déjà un compte ? Connectez vous !</a>
+        <a href="login" class="signup">Already have an account? Connect!</a>
         <br />
       </div>
     </form>
   </div>
-  <div><app-help></app-help></div>
+  <div style="margin-left: 1em"><app-help></app-help></div>
 </clr-main-container>

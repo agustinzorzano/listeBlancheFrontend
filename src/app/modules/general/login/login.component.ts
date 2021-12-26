@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       res => {
         if (res.setCookie) {
           this.baseComponent.connect();
-          this.router.navigate(['']);
+          this.router.navigate(['home']);
         }
       },
       _error => alert('Incorrect login or password !')

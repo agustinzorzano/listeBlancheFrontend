@@ -17,13 +17,13 @@ export interface History {
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-  
+
   selectedEmail: History;
   isSelected = true;
-  emails: History[];
+  emails: History[] = [];
 
   messageServerError =
-    'Erreur lors du traitement de la requête par le serveur. Veuillez nous excuser pour la gêne occasionnée.';
+    'Error while processing the request by the server. We apologize for the inconvenience';
 
   constructor(private historyService: HistoryService, private router: Router) {
     //super(router);
