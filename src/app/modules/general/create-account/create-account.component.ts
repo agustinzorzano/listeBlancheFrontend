@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BaseComponentComponent } from 'src/app/base-component/base-component.component';
-import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
-import { LogCreaComponent } from './../../../log-crea/log-crea.component';
-import { HelpComponent } from 'src/app/modules/general/help/help.component';
+import { Storable, StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-create-account',
@@ -16,11 +13,10 @@ export class CreateAccountComponent implements OnInit {
   creationForm;
 
   constructor(
-    private baseComponent: BaseComponentComponent,
     private userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private logCreaComponent: LogCreaComponent
+    private storageService: StorageService
   ) {
     this.creationForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -30,13 +26,15 @@ export class CreateAccountComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.storageService.retrieve(Storable.isAuth)) {
+      this.router.navigate(['home']);
+    }
+  }
 
   onSubmit(data): void {
     this.userService.create(data).subscribe(
       _status => {
-        this.baseComponent.connect();
-        this.logCreaComponent.connect();
         this.router.navigate(['login']);
       },
       _error => alert('Failed to create the account')

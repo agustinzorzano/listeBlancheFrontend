@@ -15,11 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './modules/general/login/login.component';
 import { url } from './config.json';
 import { HeaderComponent } from './header/header.component';
-import { BaseComponentComponent } from './base-component/base-component.component';
 import { CreateAccountComponent } from './modules/general/create-account/create-account.component';
 import { CaptchaComponent } from './modules/general/captcha/captcha.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
-import { LogCreaComponent } from './log-crea/log-crea.component';
 import { StorageService } from './services/storage.service';
 import { ListComponent } from './modules/general/list/list.component';
 import { HelpComponent } from './modules/general/help/help.component';
@@ -36,10 +34,8 @@ import { AuthComponentComponent } from './modules/general/auth-component/auth-co
     SingleMailComponent,
     LoginComponent,
     HeaderComponent,
-    BaseComponentComponent,
     CreateAccountComponent,
     CaptchaComponent,
-    LogCreaComponent,
     ListComponent,
     HelpComponent,
     HistoryComponent,

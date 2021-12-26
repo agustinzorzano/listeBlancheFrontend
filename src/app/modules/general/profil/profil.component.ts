@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { AuthComponentComponent } from '../auth-component/auth-component.component';
 import { StorageService } from '../../../services/storage.service';
-import { BaseComponentComponent } from '../../../base-component/base-component.component';
-
 
 interface Profil {
   full_name: string;
@@ -26,13 +24,12 @@ export class ProfilComponent extends AuthComponentComponent implements OnInit {
   emailPasswordForm;
 
   constructor(
-    baseComp: BaseComponentComponent,
     profilService: ProfilService,
     router: Router,
     storageService: StorageService,
     private formBuilder: FormBuilder
   ) {
-    super(baseComp, profilService, router, storageService);
+    super(profilService, router, storageService);
     this.nameForm = this.formBuilder.group({
       nameitem: ''
     });

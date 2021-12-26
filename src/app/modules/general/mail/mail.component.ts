@@ -1,10 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmailService } from './../../../services/email.service';
 import { Router } from '@angular/router';
-import { SingleMailComponent } from '../single-mail/single-mail.component';
-import { HeaderComponent } from './../../../header/header.component';
 import { AuthComponentComponent } from '../auth-component/auth-component.component';
-import { BaseComponentComponent } from '../../../base-component/base-component.component';
 import { ProfilService } from '../../../services/profil.service';
 import { StorageService } from '../../../services/storage.service';
 
@@ -32,12 +29,11 @@ export class MailComponent extends AuthComponentComponent implements OnInit {
     'Error while processing the request by the server. We apologize for the inconvenience.';
 
   constructor(private emailService: EmailService,
-              baseComp: BaseComponentComponent,
               profilService: ProfilService,
               router: Router,
               storageService: StorageService) {
     //super(router);
-    super(baseComp, profilService, router, storageService);
+    super(profilService, router, storageService);
   }
 
   ngOnInit() {

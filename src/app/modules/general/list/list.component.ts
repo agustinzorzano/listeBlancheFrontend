@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ListService } from '../../../services/list.service';
 import { AuthComponentComponent } from '../auth-component/auth-component.component';
-import { BaseComponentComponent } from '../../../base-component/base-component.component';
 import { ProfilService } from '../../../services/profil.service';
 import { Router } from '@angular/router';
 import { StorageService } from '../../../services/storage.service';
@@ -27,11 +26,10 @@ export class ListComponent extends AuthComponentComponent implements OnInit {
 
   constructor(private listService: ListService,
               private formBuilder: FormBuilder,
-              baseComp: BaseComponentComponent,
               profilService: ProfilService,
               router: Router,
               storageService: StorageService) {
-    super(baseComp, profilService, router, storageService);
+    super(profilService, router, storageService);
     this.addInWhiteListForm = this.formBuilder.group({
       whiteemailitem: ''
     });

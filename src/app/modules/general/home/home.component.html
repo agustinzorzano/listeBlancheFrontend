@@ -1,16 +1,18 @@
+<!--<app-header></app-header>-->
 <clr-main-container>
-  <div class="app">
-    <p>Hello, {{ profil?.full_name }} !</p>
-    <!--<p>mdp : {{profil.mdp}}</p>-->
-    <p>Welcome to the account of your email address {{ profil?.email }}</p>
-  </div>
+  <app-header>
+    <div class="app">
+      <p>Hello, {{ this.profil?.full_name }} !</p>
+      <p>Welcome to the account of your email address {{ profil?.email }}</p>
+    </div>
 
-  <div>
-    <button class="btn btn-outline" (click)="onGoToLogin()">
-      <span class="nav-text">Sign out</span>
-    </button>
-  </div>
+    <div>
+      <button class="btn btn-outline" (click)="onGoToLogin()">
+        <span class="nav-text">Sign out</span>
+      </button>
+    </div>
+  </app-header>
 </clr-main-container>
 
 
-<!--Composant comme page d'accueil de l'utilisateur. Possible amélioration : tableau de bord avec des statistiques. -->
+  <!--Composant comme page d'accueil de l'utilisateur. Possible amélioration : tableau de bord avec des statistiques. -->

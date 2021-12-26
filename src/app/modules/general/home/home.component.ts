@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { LoginService } from './../../../services/login.service';
-import { BaseComponentComponent } from './../../../base-component/base-component.component';
 import { ProfilService } from './../../../services/profil.service';
 import { Storable, StorageService } from './../../../services/storage.service';
 import { AuthComponentComponent } from '../auth-component/auth-component.component';
@@ -23,19 +22,20 @@ export class HomeComponent extends AuthComponentComponent implements OnInit {
   email: string;
 
   constructor(
-    baseComp: BaseComponentComponent,
+    private loginService: LoginService,
     profilService: ProfilService,
     router: Router,
     storageService: StorageService
   ) {
-    super(baseComp, profilService, router, storageService);
+    super(profilService, router, storageService);
   }
 
   ngOnInit() {}
 
   onGoToLogin() {
-    this.storageService.store(Storable.isAuth, false);
-    this.baseComp.connect();
-    this.router.navigate(['base']);
+    this.loginService.logout().subscribe(v => {
+      this.storageService.store(Storable.isAuth, false);
+      this.router.navigate(['login']);
+    });
   }
 }

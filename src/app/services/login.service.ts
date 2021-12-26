@@ -16,6 +16,7 @@ interface IsConnected {
 })
 export class LoginService implements OnInit {
   adresse: string = `${config.url}lr/login`;
+  logoutAddress: string = `${config.url}lr/logout`;
   adresse2: string = `${config.url}lr/auth/connect`;
   response: any;
 
@@ -52,7 +53,10 @@ export class LoginService implements OnInit {
     return this.storageService.retrieve(Storable.isAuth);
   }
 
-  signUp() {
-    this.storageService.store(Storable.haveAccount, false);
+  logout() {
+    return this.http
+      .get(this.logoutAddress, {
+        withCredentials: !config['proxy-dev']
+      });
   }
 }

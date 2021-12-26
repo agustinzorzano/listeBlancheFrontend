@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CaptchaService } from '../../../services/captcha.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-captcha',
@@ -13,6 +14,7 @@ export class CaptchaComponent implements OnInit {
   id: string;
   emptyEmail = false;
   emptyCaptcha = false;
+  siteKey: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,10 +30,8 @@ export class CaptchaComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id === null) {
-      this.id = location.pathname.split('/').pop();
-    }
     console.log(this.id);
+    this.siteKey = environment.siteKey;
   }
 
   public resolved(captchaResponse: string): void {
@@ -53,7 +53,7 @@ export class CaptchaComponent implements OnInit {
         res => {
           console.log(res);
           console.log('ir a otra pagina');
-          this.router.navigate(['']);
+          this.router.navigate(['home']);
         },
         error => {
           this.captchaForm.reset();
