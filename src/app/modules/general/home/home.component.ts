@@ -5,6 +5,7 @@ import { LoginService } from './../../../services/login.service';
 import { BaseComponentComponent } from './../../../base-component/base-component.component';
 import { ProfilService } from './../../../services/profil.service';
 import { Storable, StorageService } from './../../../services/storage.service';
+import { AuthComponentComponent } from '../auth-component/auth-component.component';
 
 interface Profil {
   full_name: string;
@@ -16,30 +17,21 @@ interface Profil {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  profil: Profil;
+export class HomeComponent extends AuthComponentComponent implements OnInit {
+  // profil: Profil;
   full_name: string;
   email: string;
 
   constructor(
-    private baseComp: BaseComponentComponent,
-    private profilService: ProfilService,
-    private router: Router,
-    private storageService: StorageService
-  ) {}
-
-  ngOnInit() {
-    this.profilService.getInfos().subscribe(
-      data => {
-        this.profil = data;
-      },
-      error => {
-        this.profil = { full_name: 'None', email: 'None' };
-      }
-    );
-    //this.full_name=this.profil.full_name
-    //this.email=this.profil.email
+    baseComp: BaseComponentComponent,
+    profilService: ProfilService,
+    router: Router,
+    storageService: StorageService
+  ) {
+    super(baseComp, profilService, router, storageService);
   }
+
+  ngOnInit() {}
 
   onGoToLogin() {
     this.storageService.store(Storable.isAuth, false);

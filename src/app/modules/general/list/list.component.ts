@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ListService } from '../../../services/list.service';
+import { AuthComponentComponent } from '../auth-component/auth-component.component';
+import { BaseComponentComponent } from '../../../base-component/base-component.component';
+import { ProfilService } from '../../../services/profil.service';
+import { Router } from '@angular/router';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent extends AuthComponentComponent implements OnInit {
   addInWhiteListForm;
   addInBlackListForm;
   whitelist: string[] = [];
@@ -20,7 +25,13 @@ export class ListComponent implements OnInit {
   messageServerError =
     'Error while processing the request by the server. We apologize for the inconvenience.';
 
-  constructor(private listService: ListService, private formBuilder: FormBuilder) {
+  constructor(private listService: ListService,
+              private formBuilder: FormBuilder,
+              baseComp: BaseComponentComponent,
+              profilService: ProfilService,
+              router: Router,
+              storageService: StorageService) {
+    super(baseComp, profilService, router, storageService);
     this.addInWhiteListForm = this.formBuilder.group({
       whiteemailitem: ''
     });

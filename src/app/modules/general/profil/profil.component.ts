@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ProfilService } from './../../../services/profil.service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
+import { AuthComponentComponent } from '../auth-component/auth-component.component';
+import { StorageService } from '../../../services/storage.service';
+import { BaseComponentComponent } from '../../../base-component/base-component.component';
+
 
 interface Profil {
   full_name: string;
@@ -14,18 +18,21 @@ interface Profil {
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css']
 })
-export class ProfilComponent implements OnInit {
-  profil: Profil;
+export class ProfilComponent extends AuthComponentComponent implements OnInit {
+  // profil: Profil;
   nameForm;
   emailForm;
   passwordForm;
   emailPasswordForm;
 
   constructor(
-    private profilService: ProfilService,
-    private router: Router,
+    baseComp: BaseComponentComponent,
+    profilService: ProfilService,
+    router: Router,
+    storageService: StorageService,
     private formBuilder: FormBuilder
   ) {
+    super(baseComp, profilService, router, storageService);
     this.nameForm = this.formBuilder.group({
       nameitem: ''
     });
@@ -40,16 +47,7 @@ export class ProfilComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.profilService.getInfos().subscribe(
-      data => {
-        this.profil = data;
-      },
-      error => {
-        this.profil = { full_name: 'None', email: 'None' };
-      }
-    );
-  }
+  ngOnInit() {}
 
   onSubmitName(data) {
     this.profilService.putName(data.nameitem).subscribe(

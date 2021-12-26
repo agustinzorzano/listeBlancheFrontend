@@ -25,6 +25,7 @@ import { ListComponent } from './modules/general/list/list.component';
 import { HelpComponent } from './modules/general/help/help.component';
 import { HistoryComponent } from './modules/general/history/history.component';
 import { ForgotPassComponent } from './modules/general/forgot-pass/forgot-pass.component';
+import { AuthComponentComponent } from './modules/general/auth-component/auth-component.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ForgotPassComponent } from './modules/general/forgot-pass/forgot-pass.c
     ListComponent,
     HelpComponent,
     HistoryComponent,
-    ForgotPassComponent
+    ForgotPassComponent,
+    AuthComponentComponent
   ],
   imports: [
     BrowserModule,

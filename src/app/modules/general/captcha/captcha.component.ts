@@ -28,6 +28,9 @@ export class CaptchaComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id === null) {
+      this.id = location.pathname.split('/').pop();
+    }
     console.log(this.id);
   }
 
