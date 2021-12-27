@@ -79,7 +79,10 @@ export class MailComponent extends AuthComponentComponent implements OnInit {
         location.reload();
       },
       error => {
-        if (error.status !== '304') alert(this.messageServerError);
+        console.log(error);
+        if (error.status !== '304') {
+          alert(this.messageServerError);
+        }
       }
     );
   }
