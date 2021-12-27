@@ -25,7 +25,7 @@ export class AuthComponentComponent {
         this.profil = data;
       },
       error => {
-        if (error.status === 401) {
+        if (error.status === 401 || error.status === 0) {
           this.storageService.store(Storable.isAuth, false);
           this.router.navigate(['login']);
         }

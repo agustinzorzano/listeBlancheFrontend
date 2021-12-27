@@ -24,8 +24,8 @@ const routes: Routes = [
   { path: 'list', component: ListComponent },
   { path: 'help', component: HelpComponent },
   { path: 'history', component: HistoryComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
