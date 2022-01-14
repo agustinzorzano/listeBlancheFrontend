@@ -1,5 +1,23 @@
 # ListeBlancheFrontend
 
+Project that consists in the development of an anti-spam application which is divided in
+three parts:
+
+* [Frontend](https://github.com/agustinzorzano/listeBlancheFrontend)
+* [API](https://github.com/agustinzorzano/whitelistRest)
+* [Backend scripts](https://github.com/agustinzorzano/liste_blanche_backend) 
+
+In this repository we have defined the frontend interface using Angular. 
+This website will be used by the user to register his mailbox and 
+manage the different options such as:  
+
+* See the mails in quarantine and manage them
+* Manage the whitelist and blacklist
+* See a history of the different actions that have been made 
+
+The project was developed during an academic exchange in France in the University "IMT Atlantique"
+and it was used as a final academic work in the University "Universidad de Buenos Aires".
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 ## Development server
