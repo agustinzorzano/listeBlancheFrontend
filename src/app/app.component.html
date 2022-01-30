@@ -7,48 +7,8 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<clr-main-container>
-	
-	<div *ngIf='captcha'><app-captcha></app-captcha></div>
-    <div *ngIf='!captcha'><app-base-component></app-base-component></div>
-	
-</clr-main-container>
-<!--
-<clr-main-container>
-	<div class="app">
-		<clr-header class="header-6 header">
-			<div class="branding"><h1><font color="#ffffff">{{title}} </font></h1></div>
-		
-			<div class="header-nav">
-				<a routerlink="/home" class="nav-link" href="/home">
-					<span class="nav-text">Home</span>
-				</a>
-				
-				<a routerlink="/mail" class="nav-link" href="/mail">
-					<span class="nav-text">Mails</span>
-				</a>
-			</div>
-			<div class="header-actions">
-				<a routerlink="/profil" class="nav-link" href="/profil" >
-					<span class="nav-text">Profil</span>
-				</a>
-			</div>
-			
-			
-		</clr-header>
-		
 
-	</div>
-	<div class="content-container">
-		
-		<main class="content-area">
-			
-			<router-outlet></router-outlet>
- 
-		</main>
-		
-		
-	</div>-->
+<router-outlet></router-outlet>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->

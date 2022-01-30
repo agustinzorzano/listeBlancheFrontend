@@ -1,40 +1,42 @@
 <clr-main-container>
-  <div class="app">
-    <div>Voici la liste des mails en quarantaine :</div>
-    <clr-datagrid [(clrDgSingleSelected)]="selectedEmail">
-      <clr-dg-column [clrDgField]="'email_subject'">email subject</clr-dg-column>
-      <clr-dg-column [clrDgField]="'email_sender'">email sender</clr-dg-column>
-      <clr-dg-column [clrDgField]="'created_at'">created at</clr-dg-column>
+  <app-header>
+    <div class="app">
+      <div>Here is the list of the emails in quarantine:</div>
+      <clr-datagrid [(clrDgSingleSelected)]="selectedEmail">
+        <clr-dg-column [clrDgField]="'email_subject'">email subject</clr-dg-column>
+        <clr-dg-column [clrDgField]="'email_sender'">email sender</clr-dg-column>
+        <clr-dg-column [clrDgField]="'created_at'">created at</clr-dg-column>
 
-      <clr-dg-row *clrDgItems="let email of emails" [clrDgItem]="email">
-        <clr-dg-cell>{{ email.email_subject }}</clr-dg-cell>
-        <clr-dg-cell>{{ email.email_sender }}</clr-dg-cell>
-        <clr-dg-cell>{{ email.created_at }}</clr-dg-cell>
-      </clr-dg-row>
+        <clr-dg-row *clrDgItems="let email of emails" [clrDgItem]="email">
+          <clr-dg-cell>{{ email.email_subject }}</clr-dg-cell>
+          <clr-dg-cell>{{ email.email_sender }}</clr-dg-cell>
+          <clr-dg-cell>{{ email.created_at }}</clr-dg-cell>
+        </clr-dg-row>
 
-      <clr-dg-footer>{{ emails.length }} emails</clr-dg-footer>
-    </clr-datagrid>
-    Selected email:
-    <span class="emailsubject" *ngIf="selectedEmail">{{ selectedEmail.email_subject }}</span>
-  </div>
-  <div>
-    <!--<app-single-mail [emails]="selectedEmail"></app-single-mail>-->
-    <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onRestore()">
-      <span class="nav-text">Restore</span>
-    </button>
-    <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onDelete()">
-      <span class="nav-text">Delete</span>
-    </button>
-    <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onWhiteList()">
-      <span class="nav-text">Mettre cette personne sur liste blanche</span>
-    </button>
-    <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onBlackList()">
-      <span class="nav-text">Mettre cette personne sur liste noire</span>
-    </button>
-  </div>
+        <clr-dg-footer>{{ emails.length }} emails</clr-dg-footer>
+      </clr-datagrid>
+      Selected email:
+      <span class="emailsubject" *ngIf="selectedEmail">{{ selectedEmail.email_subject }}</span>
+    </div>
+    <div>
+      <!--<app-single-mail [emails]="selectedEmail"></app-single-mail>-->
+      <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onRestore()">
+        <span class="nav-text">Restore</span>
+      </button>
+      <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onDelete()">
+        <span class="nav-text">Delete</span>
+      </button>
+      <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onWhiteList()">
+        <span class="nav-text">Add address to the white list</span>
+      </button>
+      <button class="btn btn-outline" [disabled]="!selectedEmail" (click)="onBlackList()">
+        <span class="nav-text">Add address to the black list</span>
+      </button>
+    </div>
+  </app-header>
 </clr-main-container>
 
-<!--Composant principal qui affiche les mails en quarantaine, c'est à dire ceux qui attendent une action de l'utilisateur 
+<!--Composant principal qui affiche les mails en quarantaine, c'est à dire ceux qui attendent une action de l'utilisateur
     ou qui seront supprimés après une période de temps.
-    C'est ici que l'utilisateur choisit ce qu'il veut faire : le transférer sur sa boite mail, le supprimer, 
+    C'est ici que l'utilisateur choisit ce qu'il veut faire : le transférer sur sa boite mail, le supprimer,
     mettre l'expéditeur sur liste blanche ou  sur liste noire-->

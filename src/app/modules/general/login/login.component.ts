@@ -2,11 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './../../../services/login.service';
-import { HeaderComponent } from './../../../header/header.component';
 import { EmailService } from './../../../services/email.service';
-import { BaseComponentComponent } from './../../../base-component/base-component.component';
-import { Input } from '@angular/core';
-import { LogCreaComponent } from 'src/app/log-crea/log-crea.component';
+import { StorageService, Storable } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +14,11 @@ export class LoginComponent implements OnInit {
   checkoutForm;
 
   constructor(
-    private lcComponent: LogCreaComponent,
-    private baseComponent: BaseComponentComponent,
     private emailService: EmailService,
     private loginService: LoginService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
   ) {
     this.checkoutForm = this.formBuilder.group({
       email: '',
@@ -30,7 +26,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.storageService.retrieve(Storable.isAuth)) {
+      this.router.navigate(['home']);
+    }
+  }
 
   //Quand on clique sur le bouton 'se connecter' :
   // - on regarde avec la bdd si le mdp et l'id sont valides
@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(data).subscribe(
       res => {
         if (res.setCookie) {
-          this.baseComponent.connect();
-          this.router.navigate(['']);
+          this.router.navigate(['home']);
         }
       },
       _error => alert('Incorrect login or password !')
@@ -49,8 +48,6 @@ export class LoginComponent implements OnInit {
   }
 
   goSignUp() {
-    this.loginService.signUp();
-    this.lcComponent.connect();
     this.router.navigate(['create-account']);
   }
 }

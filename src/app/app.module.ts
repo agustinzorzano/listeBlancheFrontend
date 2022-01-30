@@ -15,16 +15,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './modules/general/login/login.component';
 import { url } from './config.json';
 import { HeaderComponent } from './header/header.component';
-import { BaseComponentComponent } from './base-component/base-component.component';
 import { CreateAccountComponent } from './modules/general/create-account/create-account.component';
 import { CaptchaComponent } from './modules/general/captcha/captcha.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
-import { LogCreaComponent } from './log-crea/log-crea.component';
 import { StorageService } from './services/storage.service';
 import { ListComponent } from './modules/general/list/list.component';
 import { HelpComponent } from './modules/general/help/help.component';
 import { HistoryComponent } from './modules/general/history/history.component';
 import { ForgotPassComponent } from './modules/general/forgot-pass/forgot-pass.component';
+import { AuthComponentComponent } from './modules/general/auth-component/auth-component.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +34,13 @@ import { ForgotPassComponent } from './modules/general/forgot-pass/forgot-pass.c
     SingleMailComponent,
     LoginComponent,
     HeaderComponent,
-    BaseComponentComponent,
     CreateAccountComponent,
     CaptchaComponent,
-    LogCreaComponent,
     ListComponent,
     HelpComponent,
     HistoryComponent,
-    ForgotPassComponent
+    ForgotPassComponent,
+    AuthComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ListService } from '../../../services/list.service';
+import { AuthComponentComponent } from '../auth-component/auth-component.component';
+import { ProfilService } from '../../../services/profil.service';
+import { Router } from '@angular/router';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent extends AuthComponentComponent implements OnInit {
   addInWhiteListForm;
   addInBlackListForm;
   whitelist: string[] = [];
@@ -18,9 +22,14 @@ export class ListComponent implements OnInit {
   selectedBlack : String;
 
   messageServerError =
-    'Erreur lors du traitement de la requête par le serveur. Veuillez nous excuser pour la gêne occasionnée.';
+    'Error while processing the request by the server. We apologize for the inconvenience.';
 
-  constructor(private listService: ListService, private formBuilder: FormBuilder) {
+  constructor(private listService: ListService,
+              private formBuilder: FormBuilder,
+              profilService: ProfilService,
+              router: Router,
+              storageService: StorageService) {
+    super(profilService, router, storageService);
     this.addInWhiteListForm = this.formBuilder.group({
       whiteemailitem: ''
     });
@@ -46,7 +55,7 @@ export class ListComponent implements OnInit {
     this.addInWhiteListForm.reset();
     this.listService.postInWhiteList(data.whiteemailitem).subscribe(
       _result => location.reload(),
-      _error => alert('Erreur lors du changemement')
+      _error => alert('Error during change')
     );
   }
 
@@ -54,7 +63,7 @@ export class ListComponent implements OnInit {
     this.addInBlackListForm.reset();
     this.listService.postInBlackList(data.blackemailitem).subscribe(
       _result => location.reload(),
-      _error => alert('Erreur lors du changemement')
+      _error => alert('Error during change')
     );
   }
 

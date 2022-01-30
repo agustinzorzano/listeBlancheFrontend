@@ -9,24 +9,23 @@ import { LoginComponent } from './modules/general/login/login.component';
 import { CreateAccountComponent } from './modules/general/create-account/create-account.component';
 import { CaptchaComponent } from './modules/general/captcha/captcha.component';
 import { AppComponent } from './app.component';
-import { BaseComponentComponent } from './base-component/base-component.component';
 import { ListComponent } from './modules/general/list/list.component';
 import { HelpComponent } from './modules/general/help/help.component';
 import { HistoryComponent } from './modules/general/history/history.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, data: {hasHeader: false} },
   { path: 'profil', component: ProfilComponent },
   { path: 'mail', component: MailComponent },
-  { path: 'single-mail', component: SingleMailComponent },
+  // { path: 'single-mail', component: SingleMailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
-  { path: 'verify/:id', component: AppComponent },
-  { path: 'base', component: BaseComponentComponent },
+  { path: 'verify/:id', component: CaptchaComponent },
   { path: 'list', component: ListComponent },
   { path: 'help', component: HelpComponent },
-  { path: 'history', component: HistoryComponent}
+  { path: 'history', component: HistoryComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
